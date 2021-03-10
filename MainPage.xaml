@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HESwitch.MainPage">
+
+    <ScrollView>
+        <StackLayout>
+            <Frame BackgroundColor="#003b5C" Padding="24" CornerRadius="0">
+                <Label Text="HESwitch" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+
+            <StackLayout Margin="10, 0, 10, 0">
+                <Entry Placeholder="192.168.0.0" TextChanged="SetIpAddress" Completed="SetIpAddress"/>
+                <Entry Placeholder="5200" TextChanged="SetPort" Completed="SetPort"/>
+
+                <Button x:Name="ConnectToDevice" Text="Click to Connect" Clicked="OnButtonClicked" />
+            </StackLayout>
+
+            <StackLayout>
+                <Frame BackgroundColor="#003b5C" Margin="0,0,0,0" Padding="0, 5, 0, 5" CornerRadius="0">
+                    <Label Text="Inputs" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
+                </Frame>
+
+                <Grid Margin="10,0,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="100" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="InputToDVI" Grid.Row="0" Grid.Column="0" Text="DVI" FontSize="30" Clicked="OnButtonClicked" />
+                    <Button x:Name="InputToHDMI" Grid.Row="0" Grid.Column="1" Text="HDMI" FontSize="30" Clicked="OnButtonClicked" />
+                    <Button x:Name="InputToVGA1" Grid.Row="1" Grid.Column="0" Text="VGA1" FontSize="30" Clicked="OnButtonClicked" />
+                    <Button x:Name="InputToVGA2" Grid.Row="1" Grid.Column="1" Text="VGA2" FontSize="30" Clicked="OnButtonClicked" />
+                    <Button x:Name="InputToSDI" Grid.Row="2" Grid.Column="0" Text="SDI" FontSize="30" Clicked="OnButtonClicked" />
+                    <Button x:Name="InputToDP" Grid.Row="2" Grid.Column="1" Text="DP" FontSize="30" Clicked="OnButtonClicked" />
+                </Grid>
+            </StackLayout>
+
+            <StackLayout>
+                <Frame BackgroundColor="#003b5C" Margin="0,0,0,0" Padding="0, 5, 0, 5" CornerRadius="0">
+                    <Label Text="Tools" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
+                </Frame>
+
+                <Grid Margin="10,0,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*" />
+                        <ColumnDefinition Width="0.25*" />
+                        <ColumnDefinition Width="0.25*" />
+                        <ColumnDefinition Width="0.25*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand" Text="Auto Scale" HorizontalTextAlignment="Right" TextColor="Black" FontSize="20"/>
+                    <Switch x:Name="AutoScaleSwitch" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" Toggled="OnToggled">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="On">
+                                    <VisualState.Setters>
+                                        <Setter Property="ThumbColor" Value="#003b5C" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Switch>
+                    <Label Grid.Row="0" Grid.Column="2" VerticalOptions="CenterAndExpand" Text="Blackout" HorizontalTextAlignment="Right" TextColor="Black" FontSize="20"/>
+                    <Switch x:Name="BlackoutSwitch" Grid.Row="0" Grid.Column="3" HorizontalOptions="Start" Toggled="OnToggled">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="On">
+                                    <VisualState.Setters>
+                                        <Setter Property="ThumbColor" Value="#003b5C" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Switch>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Text="Brightness" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20"/>
+                    <Slider
+                        x:Name="BrightnessAdjust"
+                        Grid.Row="2"
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="4" 
+                        ThumbColor="#003b5C" 
+                        Minimum="0"
+                        Maximum="255" 
+                        MaximumTrackColor="DarkGray" 
+                        MinimumTrackColor="Black" 
+                        Value="100" 
+                        ValueChanged="OnSliderChanged">
+                    </Slider>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
